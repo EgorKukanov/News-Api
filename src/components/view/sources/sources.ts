@@ -1,8 +1,5 @@
 import './sources.css';
-interface SourceItem {
-    name: string;
-    id: string;
-}
+import { SourceItem } from '../../../../types';
 class Sources {
     draw(data: SourceItem[]): void {
         const fragment = document.createDocumentFragment();
