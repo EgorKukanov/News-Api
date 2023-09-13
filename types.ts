@@ -49,3 +49,13 @@ export type Data = {
 };
 
 export type Callback = (data: Data) => void;
+
+//       controller.ts
+//            |
+//            |
+//            V
+
+export type Event = {
+    target: HTMLElement;
+    currentTarget: HTMLElement;
+};

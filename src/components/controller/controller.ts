@@ -1,37 +1,44 @@
 import AppLoader from './appLoader';
-
+import { Callback } from '../../../types';
+interface Event {
+    target: HTMLElement;
+    currentTarget: HTMLElement;
+}
 class AppController extends AppLoader {
-    getSources(callback) {
+    getSources(callback: Callback) {
         super.getResp(
             {
                 endpoint: 'sources',
+                options: {},
             },
             callback
         );
     }
 
-    getNews(e, callback) {
+    getNews(e: Event, callback: Callback): void {
         let target = e.target;
         const newsContainer = e.currentTarget;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id');
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
+                if (sourceId !== null) {
+                    if (newsContainer.getAttribute('data-source') !== sourceId) {
+                        newsContainer.setAttribute('data-source', sourceId);
+                        super.getResp(
+                            {
+                                endpoint: 'everything',
+                                options: {
+                                    sources: sourceId,
+                                },
                             },
-                        },
-                        callback
-                    );
+                            callback
+                        );
+                    }
+                    return;
                 }
-                return;
             }
-            target = target.parentNode;
+            target = target.parentNode as HTMLElement;
         }
     }
 }
