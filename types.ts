@@ -1,4 +1,4 @@
-//       News.ts
+//      News.ts
 //          |
 //          |
 //          V
@@ -47,3 +47,5 @@ export type Data = {
     [sources: string]: string;
     status: string;
 };
+
+export type Callback = (data: Data) => void;
