@@ -1,9 +1,6 @@
 import AppLoader from './appLoader';
 import { Callback } from '../../../types';
-interface Event {
-    target: HTMLElement;
-    currentTarget: HTMLElement;
-}
+
 class AppController extends AppLoader {
     getSources(callback: Callback) {
         super.getResp(
@@ -15,9 +12,9 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: Callback): void {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e: MouseEvent, callback: Callback): void {
+        let target = e.target as HTMLElement;
+        const newsContainer = e.currentTarget as HTMLElement;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {

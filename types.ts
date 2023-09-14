@@ -48,14 +48,14 @@ export type Data = {
     status: string;
 };
 
-export type Callback = (data: Data) => void;
+export type Callback = (data: NewsData) => void;
 
-//       controller.ts
+//          App.ts
 //            |
 //            |
 //            V
 
-export type Event = {
-    target: HTMLElement;
-    currentTarget: HTMLElement;
-};
+export interface AllData {
+    articles?: NewsItem[];
+    sources?: SourcesItem[];
+}
