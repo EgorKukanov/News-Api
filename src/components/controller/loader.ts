@@ -1,7 +1,7 @@
 import { Options, LoaderItem, Callback } from '../../../types';
 class Loader {
-    baseLink: string;
-    options: Options;
+    readonly baseLink: string;
+    readonly options: Options;
     constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;

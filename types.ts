@@ -12,6 +12,16 @@ export interface NewsItem {
     url: string;
     source: { name: string };
 }
+
+export enum NewsItemKey {
+    UrlToImage = 'urlToImage',
+    Author = 'author',
+    PublishedAt = 'publishedAt',
+    Title = 'Title',
+    Description = 'description',
+    Url = 'url',
+    Source = 'source',
+}
 export interface SourcesItem {
     name: string;
     id: string;
@@ -35,9 +45,8 @@ export interface SourcesData {
 //          |
 //          V
 
-export type Options = {
-    [apiKey: string]: string;
-};
+export type Options = Record<string, string>;
+
 export type LoaderItem = {
     endpoint: string;
     options: Options;
