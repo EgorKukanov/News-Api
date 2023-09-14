@@ -1,4 +1,4 @@
-import { Options, LoaderItem, Callback } from '../../../types';
+import { Options, LoaderItem, Callback, Endpoint } from '../../../types';
 class Loader {
     readonly baseLink: string;
     readonly options: Options;
@@ -25,7 +25,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: Options, endpoint: string): string {
+    makeUrl(options: Options, endpoint: Endpoint): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -36,7 +36,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback, options = {}): void {
+    load(method: string, endpoint: Endpoint, callback: Callback, options = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

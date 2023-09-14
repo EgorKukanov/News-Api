@@ -13,15 +13,6 @@ export interface NewsItem {
     source: { name: string };
 }
 
-export enum NewsItemKey {
-    UrlToImage = 'urlToImage',
-    Author = 'author',
-    PublishedAt = 'publishedAt',
-    Title = 'Title',
-    Description = 'description',
-    Url = 'url',
-    Source = 'source',
-}
 export interface SourcesItem {
     name: string;
     id: string;
@@ -48,7 +39,7 @@ export interface SourcesData {
 export type Options = Record<string, string>;
 
 export type LoaderItem = {
-    endpoint: string;
+    endpoint: Endpoint;
     options: Options;
 };
 
@@ -59,6 +50,15 @@ export type Data = {
 
 export type Callback = (data: NewsData) => void;
 
+//       Controller.ts
+//            |
+//            |
+//            V
+
+export enum Endpoint {
+    SOURCES = 'sources',
+    EVERYTHING = 'everything',
+}
 //          App.ts
 //            |
 //            |
